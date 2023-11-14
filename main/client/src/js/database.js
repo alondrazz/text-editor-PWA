@@ -15,11 +15,12 @@ const initdb = async () =>
 // TODO: Add logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => {
 try {
-  const db = await openDB('jete', 1);
-if (!db.objectStoreNames.contains('jate')) {
-console.error('putDb not implemented');
-return;
-}
+  const db = await openDB('jate', 1);
+
+// if (!db.objectStoreNames.contains('jate')) {
+// console.error('putDb not implemented');
+// return;
+// }
 
 const tx = db.transaction('jate', 'readwrite'); 
 const store = tx.objectStore('jate'); 

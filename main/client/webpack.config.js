@@ -22,7 +22,6 @@ module.exports = () => {
         template: './index.html',
         title: 'Webpack Plugin',
       }),
-      new MiniCssExtractPlugin(),
     ],
 // TODO: Add CSS loaders and babel to webpack.
     module: {
