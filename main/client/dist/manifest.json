@@ -1,0 +1,10 @@
+{
+  "name": "Text Editor App",
+  "short_name": "Editor",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "./",
+  "description": "A stylish text editor app",
+  "background_color": "#282c34",
+  "theme_color": "#61dafb"
+}

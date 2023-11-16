@@ -32,9 +32,9 @@ window.addEventListener('butInstall', (event) => {
 })
 
 // TODO: Add an handler for the `appinstalled` event
-// window.addEventListener('appinstalled', (event) => {
-//     event.preventDefault();
-//     let deferredPrompt = event;
+window.addEventListener('appinstalled', (event) => {
+    event.preventDefault();
+    let deferredPrompt = event;
 
     const appinstalled = document.getElementById('appinstalled');
     appinstalled.addEventListener('appinstalled', async () => {
@@ -45,4 +45,4 @@ window.addEventListener('butInstall', (event) => {
         }
         deferredPrompt = null;
 });
-
+})
