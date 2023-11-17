@@ -1,16 +1,17 @@
-// TODO: Add an event handler to the `beforeinstallprompt` event
-const buttonInstall = document.getElementById('buttonInstall');
-let deferredPrompt; 
-butInstall.addEventListener('click', async () => {
-    deferredPrompt.prompt();
-    const choiceResult = await deferredPrompt.userChoice;
+// TODO: Add an event handler to the `beforeinstallprompt` event 
+const butInstall = document.getElementById('butInstall');
+window.addEventListener('beforeinstallprompt', async (event) => {
+  event.preventDefault();
+window.deferredPrompt = event;
+butInstall.classList.toggle("hidden",false)
+    // const choiceResult = await deferredPrompt.userChoice;
 
-    if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted but install prompt');
-    } else {
-        console.log('Failed to accept but install prompt');
-    }
-    deferredPrompt = null;
+    // if (choiceResult.outcome === 'accepted') {
+    //     console.log('User accepted but install prompt');
+    // } else {
+    //     console.log('Failed to accept but install prompt');
+    // }
+    // deferredPrompt = null;
 });
   
 
@@ -19,29 +20,36 @@ butInstall.addEventListener('click', async () => {
 //     event.preventDefault();
 //     let deferredPrompt = event;
 
-    const butInstall = document.getElementById('butInstall');
-    butInstall.addEventListener('click', async () => {
-        if (choiceResult.outcome === 'accepted') {
-            console,log('User accepted but install prompt');
-        } else {
-            console.log('Failed to accept but install prompt');
-        }
-        deferredPrompt = null;
-    });
+
+butInstall.addEventListener('click', async () => {
+  const promptEvent = window.deferredPrompt
+  if (
+    !promptEvent
+  ) {
+    return; 
+  }
+  promptEvent.prompt ()
+  window.deferredPrompt = null;
+  butInstall.classList.toggle("hidden",true)
+    // const choiceResult = await deferredPrompt.userChoice;
+    // if (choiceResult.outcome === 'accepted') {
+    //     console.log('User accepted but install prompt');
+    // } else {
+    //     console.log('Failed to accept but install prompt');
+    // }
+    // deferredPrompt = null;
+});
 
 
 // TODO: Add an handler for the `appinstalled` event
 window.addEventListener('appinstalled', (event) => {
-    event.preventDefault();
-    let deferredPrompt = event;
-
-    const appinstalled = document.getElementById('appinstalled');
-    appinstalled.addEventListener('appinstalled', async () => {
-        if (choiceResult.outcome === 'accepted') {
-            console.log(' User accepted app install prompt');
-        } else {
-            console.log('User failed app install prompt');
-        }
-        deferredPrompt = null;
+  window.deferredPrompt = null;
+  // event.preventDefault();
+  // const choiceResult = event;
+  // if (choiceResult.outcome === 'accepted') {
+  //     console.log('User accepted app install prompt');
+  // } else {
+  //     console.log('User failed app install prompt');
+  // }
+  // deferredPrompt = null;
 });
-})
